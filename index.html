@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личная веб-страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff5733;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        .chat-container {
+            background-color: #ffffff;
+            border: 2px solid #ff5733;
+            border-radius: 10px;
+            padding: 1rem;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+        .chat-input {
+            width: calc(100% - 20px);
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .send-btn {
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .send-btn:hover {
+            background-color: #ff7844;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать на мою страницу!</h1>
+    </header>
+    <main>
+        <div class="chat-container">
+            <div class="chat-box" id="chatBox">
+                <!-- Сообщения будут отображаться здесь -->
+            </div>
+            <input type="text" id="chatInput" class="chat-input" placeholder="Введите ваше сообщение...">
+            <button onclick="sendMessage()" class="send-btn">Отправить</button>
+        </div>
+    </main>
+
+    <script>
+        function sendMessage() {
+            const chatBox = document.getElementById('chatBox');
+            const chatInput = document.getElementById('chatInput');
+            const message = chatInput.value.trim();
+
+            if (message) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                chatBox.appendChild(messageElement);
+                chatBox.scrollTop = chatBox.scrollHeight; // Прокрутка вниз
+                chatInput.value = '';
+            }
+        }
+    </script>
+</body>
+</html>
